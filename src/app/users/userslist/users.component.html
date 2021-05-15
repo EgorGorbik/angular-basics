@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-md-8">
+    <h3>Users List</h3>
+
+    <div>
+      <a href="#" class="btn btn-primary" [routerLink]="['/users/add']">Add User</a>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Age</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users | async">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.surname }}</td>
+        <td>{{ user.age }}</td>
+        <td>
+        <td>
+          <a
+            href=""
+            class="btn btn-primary"
+            [routerLink]="[ 'edit', user.id]"
+          >Update</a>&nbsp;
+          <button
+            class="btn btn-danger"
+            (click)="onDeleteUser(user.id)"
+          >Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="row my-4">
+  <div class="col-md-12">
+    <h3>Edit User</h3>
+    <hr />
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label>Name</label>
+        <input type="text" class="form-control" formControlName="name" />
+        <div
+          *ngIf="userForm.get('name').touched && !userForm.get('name').valid"
+        >
+          <div *ngIf="userForm.get('name').errors.required">
+            Name is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label>Surname</label>
+        <input type="text" class="form-control" formControlName="surname" />
+        <div
+          *ngIf="userForm.get('surname').touched && !userForm.get('surname').valid"
+        >
+          <div *ngIf="userForm.get('surname').errors.required">
+            Surname is required
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label>Age</label>
+        <input type="number" class="form-control" formControlName="age" />
+        <div
+          *ngIf="userForm.get('age').touched && !userForm.get('age').valid"
+        >
+          <div *ngIf="userForm.get('age').errors.required">
+            Age is required
+          </div>
+        </div>
+      </div>
+
+
+      <div class="my-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!userForm.valid"
+        >Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
